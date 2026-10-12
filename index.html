@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>蔡品安</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* 版面：一張學生證式的身分卡置頂，下方是單欄的個人介紹區塊 */
+:root {
+  --bg: #eef1f6;
+  --surface: #ffffff;
+  --fg: #16202e;
+  --muted: #5b6678;
+  --line: #d4dae4;
+  --accent: #2346a8;
+  --accent-soft: #e2e8f7;
+  --display: "Noto Serif TC", "Songti TC", serif;
+  --body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1520; --surface: #172030; --fg: #e6ebf3; --muted: #97a3b6;
+    --line: #2a3548; --accent: #8aa6ff; --accent-soft: #1e2a45; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1520; --surface: #172030; --fg: #e6ebf3; --muted: #97a3b6;
+  --line: #2a3548; --accent: #8aa6ff; --accent-soft: #1e2a45; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--body); font-size: 1rem; line-height: 1.75;
+  padding-inline: 16px; padding-block: 48px 64px;
+}
+.wrap { max-width: 720px; margin: 0 auto; display: grid; gap: 48px; }
+
+/* 身分卡 */
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+  overflow: hidden; box-shadow: 0 10px 30px -18px rgba(20, 40, 90, .35);
+}
+.card-top {
+  background: var(--accent); color: #fff;
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 10px 20px; font-size: .78rem; letter-spacing: .14em; font-weight: 500;
+}
+:root[data-theme="dark"] .card-top { color: #0f1520; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .card-top { color: #0f1520; } }
+.card-body { display: flex; flex-wrap: wrap; gap: 24px; padding: 28px 24px; align-items: center; }
+.avatar {
+  width: 96px; height: 120px; flex: none; border-radius: 8px;
+  background: var(--accent-soft); border: 1px dashed var(--line);
+  display: grid; place-items: center; color: var(--muted); font-size: .8rem; text-align: center;
+}
+.id-info { min-width: 0; flex: 1 1 260px; display: grid; gap: 14px; }
+.label { font-size: .72rem; letter-spacing: .16em; color: var(--muted); font-weight: 500; }
+.name { font-family: var(--display); font-weight: 900; font-size: clamp(1.8rem, 6vw, 2.4rem); line-height: 1.2; margin: 2px 0 0; }
+.sid {
+  font-family: var(--mono); font-weight: 600; font-size: clamp(1.6rem, 6.5vw, 2.2rem);
+  letter-spacing: .08em; color: var(--accent); margin: 2px 0 0;
+  font-variant-numeric: tabular-nums;
+}
+.meta { display: flex; flex-wrap: wrap; gap: 8px 28px; }
+.meta div { min-width: 0; }
+.meta p { margin: 0; font-family: var(--mono); font-size: .95rem; font-variant-numeric: tabular-nums; }
+
+/* 內容區塊 */
+section h2 {
+  font-family: var(--display); font-weight: 600; font-size: 1.35rem;
+  margin: 0 0 12px; text-wrap: balance;
+  padding-bottom: 8px; border-bottom: 1px solid var(--line);
+}
+section p { margin: 0; max-width: 65ch; }
+.todo { color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.tags li {
+  background: var(--accent-soft); color: var(--accent);
+  padding: 2px 12px; border-radius: 999px; font-size: .88rem; font-weight: 500;
+}
+footer {
+  font-size: .82rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px;
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px;
+}
+footer span { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+
+<main class="wrap">
+  <article class="card" aria-label="個人資料卡">
+    <div class="card-top"><span>STUDENT</span><span>個人網站 v0.1</span></div>
+    <div class="card-body">
+      <div class="avatar" aria-hidden="true">照片<br>待補</div>
+      <div class="id-info">
+        <div>
+          <div class="label">姓名</div>
+          <h1 class="name">蔡品安</h1>
+        </div>
+        <div>
+          <div class="label">學號</div>
+          <p class="sid">414210590</p>
+        </div>
+        <div class="meta">
+          <div>
+            <div class="label">座號</div>
+            <p>43</p>
+          </div>
+          <div>
+            <div class="label">建立日期</div>
+            <p><time datetime="2026-10-05">2026 / 10 / 05（一）</time></p>
+          </div>
+          <div>
+            <div class="label">系所</div>
+            <p class="todo">待補</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <section>
+    <h2>關於我</h2>
+    <p class="todo">在這裡寫兩三句自我介紹：就讀的學校與科系、正在學什麼、對什麼有興趣。</p>
+  </section>
+
+  <section>
+    <h2>技能與興趣</h2>
+    <ul class="tags">
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>範例：程式設計</li>
+      <li>範例：攝影</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>作品與專題</h2>
+    <p class="todo">之後可以放課堂作業、專題或社團成果，每項附上一句說明和連結。</p>
+  </section>
+
+  <section>
+    <h2>聯絡方式</h2>
+    <p class="todo">Email 或 GitHub 帳號（待補）</p>
+  </section>
+
+  <footer>
+    <span>蔡品安 · 414210590</span>
+    <span>最後更新 2026-10-05</span>
+  </footer>
+</main>
+</body>
+</html>
